@@ -55,8 +55,9 @@ task createJavadocs(type: Javadoc, description: 'Generate javadocs for all proje
 	// find referenced classes.
 	classpath =  rootProject.ext.ghidraPath
 	
+	// not needed for JDK 13 ??
 	// If we don't exclude module directories, the javascript search feature doesn't work
-	options.addBooleanOption("-no-module-directories", true)
+	// options.addBooleanOption("-no-module-directories", true)
 	
 	// Some internal packages are not public and need to be exported.
     options.addMultilineStringsOption("-add-exports").setValue(["java.desktop/sun.awt.image=ALL-UNNAMED", 
