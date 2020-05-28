@@ -207,7 +207,9 @@ public class GraphComponent<V extends VisualVertex, E extends VisualEdge<V>, G e
 		renderContext.setVertexFillPaintTransformer(
 			new PickableVertexPaintTransformer<>(pickedVertexState, Color.WHITE, Color.YELLOW));
 
-		viewer.setBackground(Color.WHITE);
+		viewer.setBackground(Color.GREEN);
+		// viewer.setOpaque(true);
+		// viewer.setBackground(new Color(0xe3e3e3));
 
 		viewer.setGraphOptions(new VisualGraphOptions());
 
@@ -218,6 +220,8 @@ public class GraphComponent<V extends VisualVertex, E extends VisualEdge<V>, G e
 			Dimension viewerSize) {
 
 		GraphViewer<V, E> viewer = createPrimaryGraphViewer(layout, viewerSize);
+		viewer.setOpaque(true);
+		viewer.setBackground(new Color(0xe3e3e3));
 
 		viewer.setViewerInitializedListener(v -> {
 			viewerInitialized(v);
@@ -333,10 +337,10 @@ public class GraphComponent<V extends VisualVertex, E extends VisualEdge<V>, G e
 			SatelliteGraphViewer<V, E> satellite) {
 
 		installCommonListeners(viewer, satellite);
+		
 
 		// add our panels...
 		mainPanel = new JPanel(new BorderLayout());
-
 		layeredPane = new JLayeredPane() {
 
 			@Override
@@ -365,9 +369,13 @@ public class GraphComponent<V extends VisualVertex, E extends VisualEdge<V>, G e
 		});
 
 		layeredPane.setPreferredSize(new Dimension(400, 400));
-
+		
+		viewer.setOpaque(true);
+		viewer.setBackground(Color.decode("#e3e3e3"));
+		
+		
 		layeredPane.add(viewer, PRIMARY_VIEWER_LAYER);
-
+		layeredPane.setBackground(new Color(0xe3e3e3));
 		layeredPane.add(satellite, SATELLITE_VIEWER_LAYER);
 		satellite.setDocked(true);
 

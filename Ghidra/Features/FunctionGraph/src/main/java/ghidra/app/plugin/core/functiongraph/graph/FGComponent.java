@@ -223,7 +223,8 @@ public class FGComponent extends GraphComponent<FGVertex, FGEdge, FunctionGraph>
 			viewer.setBackground(UNDEFINED_FUNCTION_COLOR);
 		}
 		else {
-			viewer.setBackground(Color.WHITE);
+			// viewer.setBackground(Color.WHITE);
+			viewer.setBackground(new Color(0xe3e3e3));
 		}
 
 		return viewer;
